@@ -218,8 +218,8 @@ void menu(){
 int  getemployeename(char *name){
 	int i=0;
 	int flag=-1;
-	//重复返回flag=-1；
-	//不重复返回flag>-1；
+	//不重复返回flag=-1；
+	//重复返回flag>-1；
 	//默认不重复
 	for(i=0;i<employeegs;i++){
 		if(strcmp(name,employeesz[i].name)==0){
@@ -378,7 +378,6 @@ void readwenjian(){
 	employeegs = i;
 	fclose(fp);
 }
-
 //修改员工信息
 void changeemployee(){
 	
@@ -397,17 +396,17 @@ void changeemployee(){
 		count = i;
 		}
 	}
-	printf("请输入性别：");
+	printf("请输入新的性别：");
 	scanf("%s",employeesz[count].gender);
-	printf("请输入电话：");
+	printf("请输入新的电话：");
 	scanf("%s",employeesz[count].phone);
-	printf("请输入工资：");
+	printf("请输入新的工资：");
 	scanf("%lf",&employeesz[count].money);
-	printf("请输入年龄：");
+	printf("请输入新的年龄：");
 	scanf("%d",&employeesz[count].age);
-	printf("请输入地址：");
+	printf("请输入新的地址：");
     scanf("%s",employeesz[count].location);
-	printf("修改成功\n");
+	printf("恭喜修改成功\n");
 	savewenjian();
 }
 
@@ -434,7 +433,6 @@ void Deletempolyee(){
 	savewenjian();
 	printf("已经删除了该员工\n\n");
 }
-
 //排序员工
 void sortemployee(){
 	int choice=0;
@@ -450,17 +448,7 @@ void sortemployee(){
 	int j=0,i=0;
 	for(i=employeegs-1;i>0;i--){
 		for(j=0;j<i;j++){
-			if(
-				choice==1&&strcmp(employeesz[j].name,employeesz[j+1].name)>0
-				||
-				choice==2&&strcmp(employeesz[j].gender,employeesz[j+1].gender)>0
-				||
-				choice==3&&employeesz[i].money>employeesz[j+1].money
-				||
-				choice==4&&employeesz[j].age>employeesz[j+1].age
-				||
-				choice==5&&strcmp(employeesz[j].phone,employeesz[j+1].phone)>0
-				){
+			if(choice==1&&strcmp(employeesz[j].name,employeesz[j+1].name)>0||choice==2&&strcmp(employeesz[j].gender,employeesz[j+1].gender)>0||choice==3&&employeesz[i].money>employeesz[j+1].money||choice==4&&employeesz[j].age>employeesz[j+1].age||choice==5&&strcmp(employeesz[j].phone,employeesz[j+1].phone)>0){
 				struct Employee EM = employeesz[j];
 				employeesz[j]=employeesz[j+1];
 				employeesz[j+1]=EM;
@@ -471,6 +459,7 @@ void sortemployee(){
 	savewenjian();
     
 }
+//主函数模块
 int main(){
 	//开始就读取文件
 	readwenjian();
@@ -568,6 +557,8 @@ int main(){
 		}
 		
 	}
+	}else if(loflag==0||reflag==0){
+		return 0;
 	}
 	int ma=0;
 	scanf("%d",&ma);
